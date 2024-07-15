@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: anfis
+Version: 0.3.1
+Summary: Python Adaptive Neuro Fuzzy Inference System
+Home-page: https://github.com/twmeggs/anfis
+Author: Tim Meggs
+Author-email: twmeggs@gmail.com
+License: MIT
+Download-URL: https://github.com/twmeggs/anfis/tarball/0.3.1
+Keywords: anfis,fuzzy logic,neural networks
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: scikit-fuzzy
+
+UNKNOWN
+
+
