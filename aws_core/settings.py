@@ -41,8 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'event',
-    'membership',
     'AWSUser',
+    'tailwind',
+    'aws',
+    'django_browser_reload'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'aws_core.urls'
@@ -148,3 +151,7 @@ UNFOLD = {
     "SITE_TITLE": "AWS Cloud Club",
     "SITE_HEADER": "AWS CC Nepal"
 }
+TAILWIND_APP_NAME = 'aws'
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
