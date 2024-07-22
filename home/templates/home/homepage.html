@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- main-section -->
+<section class="lg:py-16">
+    <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <div class="mr-auto place-self-center lg:col-span-7">
+            <h1
+                class="max-w-2xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-2xl xl:text-5xl dark:text-white">
+                AWS Cloud Club in Nepal</h1>
+            <h2
+                class="mb-4 text-1xl font-normal tracking-tight leading-none text-gray-900 md:text-1xl lg:text-2xl dark:text-white">
+                <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 animate-gradient-x">
+                    Where Clouds Code, Coffee Flows, and IT Geeks Roam Free!
+                </span>
+            </h2>
+            <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                The AWS Cloud Club at Nepal introduces cloud computing, focusing on AWS, to Nepal&apos;s
+                education sector. It&apos;s a vibrant community of students exploring and innovating in cloud
+                technology, aiming to empower future Nepalese leaders with essential digital skills.</p>
+            <a href="#"
+                class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                Explore more
+                <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"></path>
+                </svg>
+            </a>
+            <a href="#"
+                class="inline-flex items-center justify-center px-5 py-3 text-base font-extrabold text-center text-white border border-gray-300 rounded-lg hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  me-2 mb-2 ">
+                Subscribe us
+            </a>
+        </div>
+        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+            <img src="{% static "assets/cloud_related/cloudman.png" %}" alt="mockup" class="responsive-img" />
+        </div>
+
+    </div>
+</section>
+
+<!-- student Community Day -->
+<section class="py-16 border border-gray-100 lg:mx-15 md:mx-5">
+    <h2
+        class=" my-16  text-4xl font-bold tracking-tight leading-none text-center text-gray-900 md:text-4xl lg:text-4xl dark:text-white">
+        <span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 animate-gradient-x">
+            Grand Event
+        </span>
+    </h2>
+    <div class="mx-auto max-w-screen-xl text-center lg:py-2 lg:px-12">
+        <h1
+            class="mb-4 text-1xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2 xl lg:text-3xl dark:text-white">
+            Student Community Day</h1>
+        <p class="px-5 mx-5 text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">AWS Cloud Club
+            Student Community Days, formerly Student Symposia, are one-day, student-led events organized by
+            Cloud Club Captains. They focus on AWS skills and career advice, bringing AWS learning to campus.
+        </p>
+
+        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400"></p>
+        <div
+            class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+            <a href="#"
+                class=" border border-white sm:mx-5 justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                Learn more </a>
+            <a href="#" id="openModalButton"
+                class="inline-flex items-center py-3 px-5 text-base font-medium text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z">
+                    </path>
+                </svg>
+                Watch video
+            </a>
+            <!-- Modal -->
+            <div id="videoModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeModalButton">&times;</span>
+                    <div class="iframe-container">
+                        <iframe class="responsive-iframe"
+                            src="assets/video/AWS Student Community Day Nepal 2024 Announcement.mp4"
+                            frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <button type="button"
+                class="text-white text-1xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-bold rounded-lg text-1xl px-5 py-2.5 text-center me-2 mb-2">Attend</button>
+        </div>
+    </div>
+
+</section>
+
+<!-- event card -->
+<br>
+<h2
+    class=" my-16  text-4xl font-bold tracking-tight leading-none text-center text-gray-900 md:text-4xl lg:text-4xl dark:text-white">
+    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 animate-gradient-x">
+        Upcoming Events
+    </span>
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <!-- Card 1 -->
+    <div
+        class="p-7 bg-transparent border border-gray-200 rounded-lg shadow dark:bg-transparent dark:border-gray-700 gradient-border cursor-pointer hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 transition-all duration-300 ease-in-out">
+        <svg class="w-7 h-7 text-white dark:text-gray-200 mb-3" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path
+                d="M18 5h-.7c.229-.467.349-.98.351-1.5a3.5 3.5 0 0 0-3.5-3.5c-1.717 0-3.215 1.2-4.331 2.481C8.4.842 6.949 0 5.5 0A3.5 3.5 0 0 0 2 3.5c.003.52.123 1.033.351 1.5H2a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a2 2 0 0 0-2-2ZM8.058 5H5.5a1.5 1.5 0 0 1 0-3c.9 0 2 .754 3.092 2.122-.219.337-.392.635-.534.878Zm6.1 0h-3.742c.933-1.368 2.371-3 3.739-3a1.5 1.5 0 0 1 0 3h.003ZM11 13H9v7h2v-7Zm-4 0H2v5a2 2 0 0 0 2 2h3v-7Zm6 0v7h3a2 2 0 0 0 2-2v-5h-5Z" />
+        </svg>
+        <img src="{% static 'assets/cloud_related/cloudman.png' %}" alt="Event Image">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-white dark:text-white">Event Name</h5>
+        </a>
+        <p class="mb-3 font-light text-gray-500 dark:text-white lg:mb-8 md:text-lg lg:text-xl">Event Description
+        </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div
+        class="p-7 bg-transparent border border-gray-200 rounded-lg shadow dark:bg-transparent dark:border-gray-700 gradient-border">
+        <svg class="w-7 h-7 text-white dark:text-gray-200 mb-3" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path
+                d="M18 5h-.7c.229-.467.349-.98.351-1.5a3.5 3.5 0 0 0-3.5-3.5c-1.717 0-3.215 1.2-4.331 2.481C8.4.842 6.949 0 5.5 0A3.5 3.5 0 0 0 2 3.5c.003.52.123 1.033.351 1.5H2a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a2 2 0 0 0-2-2ZM8.058 5H5.5a1.5 1.5 0 0 1 0-3c.9 0 2 .754 3.092 2.122-.219.337-.392.635-.534.878Zm6.1 0h-3.742c.933-1.368 2.371-3 3.739-3a1.5 1.5 0 0 1 0 3h.003ZM11 13H9v7h2v-7Zm-4 0H2v5a2 2 0 0 0 2 2h3v-7Zm6 0v7h3a2 2 0 0 0 2-2v-5h-5Z" />
+        </svg>
+        <img src="{% static 'assets/cloud_related/cloudman.png' %}" alt="Event Image">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-white dark:text-white">Event Name</h5>
+        </a>
+        <p class="mb-3 font-light text-gray-500 dark:text-gray-400 lg:mb-8 md:text-lg lg:text-xl">Event
+            Description</p>
+    </div>
+
+
+</div>
+
+<!-- Popular Blogs -->
+<br>
+<h2
+    class=" my-16  text-4xl font-bold tracking-tight leading-none text-center text-gray-900 md:text-4xl lg:text-4xl dark:text-white">
+    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 animate-gradient-x">
+        Popular Blogs
+    </span>
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <!-- Card 1 -->
+    <div
+        class="p-7 bg-transparent border border-gray-200 rounded-lg shadow dark:bg-transparent dark:border-gray-700 gradient-border cursor-pointer hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 transition-all duration-300 ease-in-out">
+        <svg class="w-7 h-7 text-white dark:text-gray-200 mb-3" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path
+                d="M18 5h-.7c.229-.467.349-.98.351-1.5a3.5 3.5 0 0 0-3.5-3.5c-1.717 0-3.215 1.2-4.331 2.481C8.4.842 6.949 0 5.5 0A3.5 3.5 0 0 0 2 3.5c.003.52.123 1.033.351 1.5H2a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a2 2 0 0 0-2-2ZM8.058 5H5.5a1.5 1.5 0 0 1 0-3c.9 0 2 .754 3.092 2.122-.219.337-.392.635-.534.878Zm6.1 0h-3.742c.933-1.368 2.371-3 3.739-3a1.5 1.5 0 0 1 0 3h.003ZM11 13H9v7h2v-7Zm-4 0H2v5a2 2 0 0 0 2 2h3v-7Zm6 0v7h3a2 2 0 0 0 2-2v-5h-5Z" />
+        </svg>
+        <img src="{% static "assets/cloud_related/cloudman.png" %}" alt="Event Image">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-white dark:text-white">Event Name</h5>
+        </a>
+        <p class="mb-3 font-light text-gray-500 dark:text-white lg:mb-8 md:text-lg lg:text-xl">Event Description
+        </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div
+        class="p-7 bg-transparent border border-gray-200 rounded-lg shadow dark:bg-transparent dark:border-gray-700 gradient-border">
+        <svg class="w-7 h-7 text-white dark:text-gray-200 mb-3" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path
+                d="M18 5h-.7c.229-.467.349-.98.351-1.5a3.5 3.5 0 0 0-3.5-3.5c-1.717 0-3.215 1.2-4.331 2.481C8.4.842 6.949 0 5.5 0A3.5 3.5 0 0 0 2 3.5c.003.52.123 1.033.351 1.5H2a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a2 2 0 0 0-2-2ZM8.058 5H5.5a1.5 1.5 0 0 1 0-3c.9 0 2 .754 3.092 2.122-.219.337-.392.635-.534.878Zm6.1 0h-3.742c.933-1.368 2.371-3 3.739-3a1.5 1.5 0 0 1 0 3h.003ZM11 13H9v7h2v-7Zm-4 0H2v5a2 2 0 0 0 2 2h3v-7Zm6 0v7h3a2 2 0 0 0 2-2v-5h-5Z" />
+        </svg>
+        <img src="{% static "assets/cloud_related/cloudman.png" %}" alt="Event Image">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-white dark:text-white">Event Name</h5>
+        </a>
+        <p class="mb-3 font-light text-gray-500 dark:text-gray-400 lg:mb-8 md:text-lg lg:text-xl">Event
+            Description</p>
+    </div>
+
+
+</div>
+{% endblock %}
