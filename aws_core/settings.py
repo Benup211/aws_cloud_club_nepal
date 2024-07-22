@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'AWSUser',
     'tailwind',
     'aws',
-    'django_browser_reload'
+    'django_browser_reload',
+    'home'
 ]
 
 MIDDLEWARE = [
