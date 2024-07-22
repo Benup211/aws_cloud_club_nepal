@@ -1,5 +1,5 @@
 from django.db import models
-
+from ckeditor_uploader.fields import RichTextUploadingField
 class EventSystem(models.Model):
     title=models.TextField(help_text="Event title")
     description=models.TextField(help_text="Event Description")
@@ -10,6 +10,7 @@ class EventSystem(models.Model):
     startDate=models.DateTimeField(help_text="Event start time")
     endDate=models.DateTimeField(help_text="Event end time")
     facilitator=models.TextField(help_text="Event facilitator")
+    detail=RichTextUploadingField()
     EventStatus = models.CharField(max_length=20, choices=[
         ('Planned', 'Planned'),
         ('Ongoing', 'Ongoing'),
@@ -30,6 +31,7 @@ class GrandEventSystem(models.Model):
     startDate=models.DateTimeField(help_text="Event start time")
     endDate=models.DateTimeField(help_text="Event end time")
     facilitator=models.TextField(help_text="Event facilitator")
+    detail=RichTextUploadingField()
     EventStatus = models.CharField(max_length=20, choices=[
         ('Planned', 'Planned'),
         ('Ongoing', 'Ongoing'),

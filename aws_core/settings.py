@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'tailwind',
     'aws',
     'django_browser_reload',
-    'home'
+    'home',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
@@ -126,6 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# STATIC_ROOT=BASE_DIR/'static'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
@@ -156,3 +158,18 @@ TAILWIND_APP_NAME = 'aws'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+#CKEDITOR
+CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' 
+CKEDITOR_CONFIGS = {
+    'default':
+        {
+            'toolbar': 'full',
+            'width': 'auto',
+            'extraPlugins': ','.join([
+                'codesnippet',
+            ]),
+        },
+}
