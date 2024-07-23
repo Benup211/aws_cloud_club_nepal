@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<aside aria-label="Related articles" class="py-8 lg:py-24 bg-transparent">
+    <div class="px-4 mx-auto max-w-screen-xl">
+        <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            {% if events %}
+            {% for event in events %}
+            <article class="max-w-xs">
+                <a href="{% url 'event:EventDetail' event.id %}">
+                    <img src="{{event.image.url}}" class="mb-5 rounded-lg" alt="{{event.title}}">
+                </a>
+                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+                    <a href="{% url 'event:EventDetail' event.id %}">{{event.title}}</a>
+                </h2>
+                <p class="mb-4 text-gray-500 dark:text-gray-400">{{event.description|truncatechars:100}}</p>
+            </article>
+            {% endfor %}
+            {% else %}
+            <p class='mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white min-h-screen'>No upcoming events</p>
+            {% endif %}
+        </div>
+    </div>
+  </aside>
+{% endblock %}
