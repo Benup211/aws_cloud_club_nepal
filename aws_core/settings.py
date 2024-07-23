@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'home',
     'django_ckeditor_5',
-    'blog'
+    'blog',
+    'teams'
 ]
 
 MIDDLEWARE = [
