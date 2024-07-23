@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="relative flex flex-col justify-center h-screen overflow-hidden">
+        <div class="w-full p-6 m-auto bg-purple-900 rounded-md shadow-md lg:max-w-xl">
+            <h1 class="text-3xl font-semibold text-center text-white">Login</h1>
+            <form class="space-y-4" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <div>
+                    <button class="btn bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 btn-block btn-primary">Sign In</button>
+                </div>
+                <span class="inline-block">Don't have an account ?
+                    <a href="/users/register" class="text-blue-600 hover:text-blue-800 hover:underline">Register</a></span>
+            </form>
+        </div>
+</div>
+{% endblock %}

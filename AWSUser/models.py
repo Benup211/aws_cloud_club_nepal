@@ -1,9 +1,15 @@
 from typing import Any
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import UserManager,AbstractBaseUser,PermissionsMixin
 from django.utils import timezone
 from django.core.validators import RegexValidator
 from django.core.mail import send_mail
+from django.utils.translation import gettext_lazy as _
+
+def validate_pdf_file(value):
+    if not value.name.endswith('.pdf'):
+        raise ValidationError(_('Only PDF files are allowed.'))
 
 class CustomUserManager(UserManager):
 
@@ -46,7 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
     last_login = models.DateTimeField(blank=True, null=True)
-    resume = models.FileField(upload_to='resumes', null=True, blank=True)
+    resume = models.FileField(upload_to='resumes', null=True, blank=True, validators=[validate_pdf_file])
 
     objects = CustomUserManager()
 

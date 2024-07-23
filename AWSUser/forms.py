@@ -1,29 +1,49 @@
-from django.forms import ModelForm, PasswordInput
+from django.forms import ModelForm, PasswordInput, CharField
 from django.core.exceptions import ValidationError
 import re
 from .models import User
 from django import forms
 
 class AWSMembershipRegisterForm(ModelForm):
+    confirm_password = CharField(
+        label='Confirm Password',
+        widget=forms.PasswordInput(attrs={'class':'w-full input input-purple-900'}),
+        required=True
+    )
+
     class Meta:
         model = User
-        fields = ['email', 'password', 'first_name', 'last_name', 'phone_number', 'address', 'resume']
+        fields = ['email', 'password', 'confirm_password', 'first_name', 'last_name', 'phone_number', 'address', 'resume']
         widgets = {
-            'email': forms.TextInput(attrs={'class':'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'}),
-            'password': forms.PasswordInput(attrs={'class':'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'}),
-            'first_name': forms.TextInput(attrs={'class':'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'}),
-            'last_name': forms.TextInput(attrs={'class':'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'}),
-            'phone_number': forms.TextInput(attrs={'class':'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'}),
-            'address': forms.TextInput(attrs={'class':'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'}),
-            'resume': forms.TextInput(attrs={'class':'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'}),
+            'email': forms.TextInput(attrs={'class':'w-full input input-purple-900'}),
+            'password': forms.PasswordInput(attrs={'class':'w-full input input-purple-900'}),
+            'first_name': forms.TextInput(attrs={'class':'w-full input input-purple-900'}),
+            'last_name': forms.TextInput(attrs={'class':'w-full input input-purple-900'}),
+            'phone_number': forms.TextInput(attrs={'class':'w-full input input-purple-900'}),
+            'address': forms.TextInput(attrs={'class':'w-full input input-purple-900'}),
+            'resume': forms.FileInput(attrs={'class':'w-full file-input input-purple-900 '}),
         }
-        
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email'].required = True
         self.fields['password'].required = True
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['phone_number'].required = True
+        self.fields['address'].required = True
+        self.fields['resume'].required = True
         self.fields['password'].validators = [password_validator]
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get('password')
+        confirm_password = cleaned_data.get('confirm_password')
+
+        if password and confirm_password and password != confirm_password:
+            self.add_error('confirm_password', "Passwords do not match.")
+
+        return cleaned_data
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -38,3 +58,13 @@ def password_validator(value):
     special_chars = r'[!@#$%^&*(),.?":{}|<>]'
     if not re.search(special_chars, value):
         raise ValidationError("Password must contain at least one special character.")
+    
+class AWSMembershipLoginForm(forms.Form):
+    email = forms.EmailField(
+        label='Email',
+        widget=forms.EmailInput(attrs={'class': 'w-full input input-purple-900'})
+    )
+    password = forms.CharField(
+        label='Password',
+        widget=forms.PasswordInput(attrs={'class': 'w-full input input-purple-900'})
+    )
