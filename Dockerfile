@@ -1,8 +1,8 @@
-# Use the official Python image.
+# Use the official Python image for amd64 architecture.
 # https://hub.docker.com/_/python
 FROM python:3.12-slim
 
-# Set the working directory.
+# Set the working directory inside the container.
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app.
