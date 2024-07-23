@@ -12,3 +12,6 @@ class HomeView(View):
             'blogs':latest_blogs
         }
         return render(request,'home/homepage.html',context)
+    
+def custom_404(request, exception):
+    return render(request, "home/404.html")
