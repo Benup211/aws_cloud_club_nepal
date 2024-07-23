@@ -3,4 +3,3 @@ __pycache__/
 media/
 db.sqlite3
 static/
-static_as/
