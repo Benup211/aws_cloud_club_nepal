@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'event',
     'AWSUser',
-    'tailwind',
-    'aws',
     'django_browser_reload',
     'home',
     'django_ckeditor_5',
@@ -155,10 +153,6 @@ UNFOLD = {
     "SITE_TITLE": "AWS Cloud Club",
     "SITE_HEADER": "AWS CC Nepal"
 }
-TAILWIND_APP_NAME = 'aws'
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
 
 #CKEDITOR
 customColorPalette = [
