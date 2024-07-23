@@ -3,8 +3,10 @@
   
     <div class="flex-1 items-center justify-between text-white">
       <div class="lg:flex items-center hidden">
-        <img src="{% static 'assets/logos/logoclub.png' %}" alt="logo" class="w-20 h-auto" />
+        <a href='/' class="flex items-center justify-between">
+          <img src="{% static 'assets/logos/logoclub.png' %}" alt="logo" class="w-20 h-auto" />
         <h3 class="text-white font-semibold ml-2 text-lg">NEPAL</h3>
+        </a>
       </div>
       <div class="navbar-start flex-none gap-2">
         <div class="dropdown">
@@ -31,13 +33,35 @@
             <li><a class="text-1xl">Speaker</a></li> 
             <li><a class="text-1xl">Gallery</a></li> 
             <li><a class="text-1xl">About Us</a></li> 
-            <button type="button" class="text-white text-1xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-bold rounded-lg text-1xl px-5 py-2.5 text-center me-2 mb-2">Register</button>
+            {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              <div class="flex items-center">
+                <a href='/admin'>
+                <button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2">Admin</button>
+                </a>
+              </div>
+              {% else %}
+              <div class="flex items-center">
+                <a href='/users/logout'>
+                <button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2">Logout</button>
+                </a>
+              </div>
+              {% endif %}
+          {% else %}
+          <div class="flex items-center">
+            <a href='/users/login'>
+            <button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2">Login</button>
+            </a>
+          </div>
+          {% endif %}
           </ul>
         </div>
       </div>
       <div class="flex items-center lg:hidden">
+        <a href='/' class="flex items-center justify-between">
         <img src="{% static 'assets/logos/logoclub.png' %}" alt="logo" class="w-10 h-auto" />
         <h3 class="text-white font-semibold ml-2 text-lg">Nepal</h3> 
+        </a>
       </div>
 
       <div class="flex-none gap-2 navbar-center hidden lg:flex">
@@ -46,10 +70,28 @@
           <li><a href='/blogs'>Blogs</a></li> 
           <li><a>Speaker</a></li> 
           <li><a>Gallery</a></li> 
-          <li><a>About Us</a></li> 
+          <li><a>About Us</a></li>
+          {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              <div class="flex items-center">
+                <a href='/admin'>
+                <button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2">Admin</button>
+                </a>
+              </div>
+              {% else %}
+              <div class="flex items-center">
+                <a href='/users/logout'>
+                <button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2">Logout</button>
+                </a>
+              </div>
+              {% endif %}
+          {% else %}
           <div class="flex items-center">
-            <button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2">Register</button>
+            <a href='/users/login'>
+            <button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2">Login</button>
+            </a>
           </div>
+          {% endif %}
         </ul>
       </div>
     </div>

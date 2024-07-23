@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/src/styles.css" rel="stylesheet">
     <link href="{% static "css/styles.css" %}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,32 +19,6 @@
         <!-- footer -->
         {% include 'footer.html' %}
     </div>
-    <script>
-        // Get modal element
-        var modal = document.getElementById("videoModal");
-        // Get open modal button
-        var openModalButton = document.getElementById("openModalButton");
-        // Get close button
-        var closeModalButton = document.getElementById("closeModalButton");
-
-        // Listen for open click
-        openModalButton.onclick = function (e) {
-            e.preventDefault();
-            modal.style.display = "block";
-        };
-
-        // Listen for close click
-        closeModalButton.onclick = function () {
-            modal.style.display = "none";
-        };
-
-        // Close modal if user clicks outside of it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        };
-    </script>
 </body>
 
 </html>
