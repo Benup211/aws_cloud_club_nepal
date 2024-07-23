@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'aws',
     'django_browser_reload',
     'home',
-    'django_ckeditor_5'
+    'django_ckeditor_5',
+    'blog'
 ]
 
 MIDDLEWARE = [
