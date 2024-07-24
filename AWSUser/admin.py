@@ -8,6 +8,6 @@ admin.site.unregister(Group)
 
 @admin.register(User)
 class AdminAWSMember(ModelAdmin):
-    list_display=('email','is_superuser','is_staff','is_active')
+    list_display=('email','is_superuser','is_staff','is_active','resume')
     list_filter=('is_superuser','is_staff','is_active')
 
