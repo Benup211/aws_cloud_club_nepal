@@ -1,5 +1,6 @@
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
+from AWSUser.models import User
 class EventSystem(models.Model):
     title=models.TextField(help_text="Event title")
     description=models.TextField(help_text="Event Description")
@@ -20,6 +21,8 @@ class EventSystem(models.Model):
     class Meta:
         verbose_name="AWS Event"
         verbose_name_plural="AWS Events"
+    def __str__(self):
+        return self.title
 
 class GrandEventSystem(models.Model):
     title=models.TextField(help_text="Event title")
@@ -41,6 +44,8 @@ class GrandEventSystem(models.Model):
     class Meta:
         verbose_name="AWS Grand Event"
         verbose_name_plural="AWS Grand Events"
+    def __str__(self):
+        return self.title
 
 class GuestSpeaker(models.Model):
     SpeakerName = models.CharField(max_length=100)
@@ -50,3 +55,13 @@ class GuestSpeaker(models.Model):
     class Meta:
         verbose_name="AWS Guest Speaker"
         verbose_name_plural="AWS Guest Speakers"
+    def __str__(self):
+        return f"{self.SpeakerName} {self.SpeakerTitle}"
+
+class EventParticipant(models.Model):
+    account_suscriber=models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
+    event_suscribed=models.ForeignKey(EventSystem,on_delete=models.CASCADE,blank=False,null=False)
+    participant_suscriber=models.EmailField(blank=True,null=True)
+
+    def __str__(self):
+        return f"{self.event_suscribed} participated by {self.account_suscriber} {self.participant_suscriber}"

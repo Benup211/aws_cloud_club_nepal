@@ -11,3 +11,6 @@ class AWSBlog(models.Model):
     summary=models.TextField(max_length=200,null=False,blank=False)
     detail=CKEditor5Field('Text',config_name='extends')
     read_time=models.IntegerField(default=2,null=False,blank=False)
+
+    def __str__(self):
+        return self.name

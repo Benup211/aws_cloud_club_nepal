@@ -78,3 +78,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         if self.is_superuser:
             self.resume = None
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.email

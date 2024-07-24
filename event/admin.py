@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import EventSystem,GrandEventSystem,GuestSpeaker
+from .models import EventSystem,GrandEventSystem,GuestSpeaker,EventParticipant
 from unfold.admin import ModelAdmin
 
 @admin.register(EventSystem)
@@ -19,3 +19,9 @@ class AdminGuestSpeaker(ModelAdmin):
     def event_titles(self,obj):
         return ', '.join([event.title for event in obj.events.all()])
     event_titles.short_description = 'Event Titles'
+
+@admin.register(EventParticipant)
+class EventParticipantAdmin(ModelAdmin):
+    list_display = ('account_suscriber', 'event_suscribed', 'participant_suscriber')
+    list_filter = ('account_suscriber__email', 'event_suscribed', 'participant_suscriber')
+    search_fields=('account_suscriber__email', 'event_suscribed__title', 'participant_suscriber')
