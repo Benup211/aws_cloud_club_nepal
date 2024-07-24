@@ -32,7 +32,7 @@
             <li><a href='/blogs' class="text-1xl">Blogs</a></li> 
             <li><a href='/teams' class="text-1xl">Teams</a></li> 
             <li><a class="text-1xl">Gallery</a></li> 
-            <li><a class="text-1xl">About Us</a></li> 
+            <li><a href='/aboutus' class="text-1xl">About Us</a></li> 
             {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}
               <div class="flex items-center">
@@ -70,7 +70,7 @@
           <li><a href='/blogs'>Blogs</a></li> 
           <li><a href='/teams'>Teams</a></li> 
           <li><a>Gallery</a></li> 
-          <li><a>About Us</a></li>
+          <li><a href='/aboutus'>About Us</a></li>
           {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}
               <div class="flex items-center">

@@ -15,3 +15,7 @@ class HomeView(View):
     
 def custom_404(request, exception):
     return render(request, "home/404.html")
+
+class AboutUs(View):
+    def get(self,request):
+        return render(request,'home/aboutus.html')
