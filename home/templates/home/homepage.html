@@ -50,40 +50,24 @@
         </span>
     </h2>
     <div class="mx-auto max-w-screen-xl text-center lg:py-2 lg:px-12">
+        {% if grand_event %}
         <h1
             class="mb-4 text-1xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2 xl lg:text-3xl dark:text-white">
-            Student Community Day</h1>
-        <p class="px-5 mx-5 text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">AWS Cloud Club
-            Student Community Days, formerly Student Symposia, are one-day, student-led events organized by
-            Cloud Club Captains. They focus on AWS skills and career advice, bringing AWS learning to campus.
+            {{grand_event.title}}</h1>
+        <p class="px-5 mx-5 text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">{{grand_event.description}}
         </p>
 
         <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400"></p>
         <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-            <a href="#"
+            <a href="{% url 'event:GrandEvent' grand_event.id %}"
                 class=" border border-white sm:mx-5 justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                 Learn more </a>
-            <a href="#" id="openModalButton"
-                class="inline-flex items-center py-3 px-5 text-base font-medium text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z">
-                    </path>
-                </svg>
-                Watch video
-            </a>
-            <!-- Modal -->
-            <div id="videoModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeModalButton">&times;</span>
-                    <div class="iframe-container">
-                        <iframe class="responsive-iframe" src="#" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-            <button type="button"
-                class="text-white text-1xl bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-bold rounded-lg text-1xl px-5 py-2.5 text-center me-2 mb-2">Attend</button>
         </div>
+        {% else %}
+        <h1
+            class="mb-4 text-1xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2 xl lg:text-3xl dark:text-white">
+            No Upcoming Events</h1>
+        {% endif %}
     </div>
 
 </section>
