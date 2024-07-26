@@ -1,6 +1,8 @@
 from django.shortcuts import render,get_object_or_404,redirect
+from django.http import Http404
+from django.utils import timezone
 from django.views import View
-from .models import EventSystem,EventParticipant
+from .models import EventSystem,EventParticipant,GrandEventSystem
 from AWSUser.models import User
 from django.contrib import messages
 from django.db import IntegrityError
@@ -41,3 +43,13 @@ class EventList(View):
     def get(self,request):
         events=EventSystem.objects.all()
         return render(request,'event/eventlist.html',{'events':events})
+    
+class GrandEvent(View):
+    def get(self,request,id):
+        current_time = timezone.now()
+        grand_event_c = GrandEventSystem.objects.filter(EventStatus='Ongoing',startDate__gt=current_time).order_by('startDate')[0]
+        if (grand_event_c.id==id):
+            grand_event=get_object_or_404(GrandEventSystem,id=id)
+        else:
+            raise Http404("Error")
+        return render(request,'event/grandEvent.html',{'grand_event':grand_event})
