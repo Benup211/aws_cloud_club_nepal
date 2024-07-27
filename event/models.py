@@ -95,3 +95,16 @@ class EventParticipant(models.Model):
 
     def __str__(self):
         return f"{self.event_suscribed} participated by {self.account_suscriber} {self.participant_suscriber}"
+
+class GrandEventParticipant(models.Model):
+    account_suscriber=models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
+    event_suscribed=models.ForeignKey(GrandEventSystem,on_delete=models.CASCADE,blank=False,null=False)
+    participant_suscriber=models.EmailField(blank=True,null=True)
+    class Meta:
+        unique_together = [
+            ('event_suscribed', 'account_suscriber'),
+            ('event_suscribed', 'participant_suscriber'),
+        ]
+
+    def __str__(self):
+        return f"{self.event_suscribed} participated by {self.account_suscriber} {self.participant_suscriber}"
