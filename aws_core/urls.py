@@ -25,6 +25,7 @@ urlpatterns = [
     path('events/',include('event.urls')),
     path('blogs/',include('blog.urls')),
     path('teams/',include('teams.urls')),
+    path('gallery/',include('gallery.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
 ]
