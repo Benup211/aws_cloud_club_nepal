@@ -9,6 +9,7 @@ class HomeView(View):
         latest_events = EventSystem.objects.order_by('-startDate')[:3]
         latest_blogs=AWSBlog.objects.order_by('-date_of_publish')[:3]
         current_time = timezone.now()
+        current_time=current_time.replace(hour=0, minute=0, second=0)
         grand_event = GrandEventSystem.objects.filter(EventStatus='Ongoing',startDate__gt=current_time).order_by('startDate').first()
         context={
             'events':latest_events,
