@@ -3,6 +3,7 @@ from django.views import View
 from event.models import GrandEventSystem,EventSystem
 from blog.models import AWSBlog
 from django.utils import timezone
+from datetime import datetime
 class HomeView(View):
 
     def get(self,request):
