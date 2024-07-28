@@ -14,15 +14,7 @@ class AWSMembershipRegisterForm(ModelForm):
     class Meta:
         model = User
         fields = ['email', 'password', 'confirm_password', 'first_name', 'last_name', 'phone_number', 'address', 'resume']
-        widgets = {
-            'email': forms.TextInput(attrs={'class':'w-full input input-purple-900'}),
-            'password': forms.PasswordInput(attrs={'class':'w-full input input-purple-900'}),
-            'first_name': forms.TextInput(attrs={'class':'w-full input input-purple-900'}),
-            'last_name': forms.TextInput(attrs={'class':'w-full input input-purple-900'}),
-            'phone_number': forms.TextInput(attrs={'class':'w-full input input-purple-900'}),
-            'address': forms.TextInput(attrs={'class':'w-full input input-purple-900'}),
-            'resume': forms.FileInput(attrs={'class':'w-full file-input input-purple-900 '}),
-        }
+        
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -34,7 +26,13 @@ class AWSMembershipRegisterForm(ModelForm):
         self.fields['address'].required = True
         self.fields['resume'].required = True
         self.fields['password'].validators = [password_validator]
+        for field_name, field in self.fields.items():
+            field.widget.attrs.update({
+                'class': 'bg-gray-50 border border-2 w-full p-2.5 mb-1 text-sm rounded-lg focus:ring-blue-500'
+            })
+       
 
+        
     def clean(self):
         cleaned_data = super().clean()
         password = cleaned_data.get('password')
@@ -62,9 +60,9 @@ def password_validator(value):
 class AWSMembershipLoginForm(forms.Form):
     email = forms.EmailField(
         label='Email',
-        widget=forms.EmailInput(attrs={'class': 'w-full input input-purple-900'})
+        widget=forms.EmailInput(attrs={'class': 'bg-gray-50 border border-2 w-full p-2.5 mb-1 text-sm rounded-lg'})
     )
     password = forms.CharField(
         label='Password',
-        widget=forms.PasswordInput(attrs={'class': 'w-full input input-purple-900'})
+        widget=forms.PasswordInput(attrs={'class': 'bg-gray-50 border border-2 w-full p-2.5 mb-1 text-sm rounded-lg focus:ring-blue-500'})
     )

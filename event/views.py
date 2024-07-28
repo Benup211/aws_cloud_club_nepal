@@ -41,8 +41,11 @@ class EventDetail(View):
     
 class EventList(View):
     def get(self,request):
+        current_time = timezone.now()
+        current_time=current_time.replace(hour=0, minute=0, second=0)
         events=EventSystem.objects.all()
-        return render(request,'event/eventlist.html',{'events':events})
+        grand_event_c = GrandEventSystem.objects.filter(EventStatus='Ongoing',startDate__gt=current_time).order_by('startDate').first()
+        return render(request,'event/eventlist.html',{'events':events,'grand_event':grand_event_c})
     
 class GrandEvent(View):
     def get(self,request,id):
