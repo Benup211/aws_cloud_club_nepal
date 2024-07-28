@@ -2,4 +2,8 @@
 __pycache__/
 media/
 db.sqlite3
-static/
+static/admin/
+static/django_ckeditor_5/
+static/django-browser-reload/
+static/blogs.html
+static/unfold/
