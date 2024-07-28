@@ -31,10 +31,11 @@
                     <form method="post" class="mt-2" action="{% url 'event:EventDetail' event.id %}">
                         {% csrf_token %}
                         {% if not request.user.is_authenticated %}
-                        <label for="participant_email">Email:</label>
-                        <input class="block w-full form-control input mt-2" type="email" id="participant_email" name="participant_email" required>
+                        <br>
+                        <label for="participant_email" class="">Email</label>
+                        <input class="bg-gray-50 border border-2 w-full text-sm rounded-lg  block w-full form-control input mx-1 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none mt-2 " type="email" id="participant_email" name="participant_email" required>
                         {% endif %}
-                        <button class="btn bg-purple-600 mt-2" type="submit">Participate</button>
+                        <button class="btn bg-purple-600 inline-flex items-center justify-center px-10 py-3 text-base font-extrabold text-center text-white rounded-lg hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 mt-4" type="submit">Participate</button>
                     </form>
                 </article>
             </div>

@@ -19,7 +19,7 @@
                 The AWS Cloud Club at Nepal introduces cloud computing, focusing on AWS, to Nepal&apos;s
                 education sector. It&apos;s a vibrant community of students exploring and innovating in cloud
                 technology, aiming to empower future Nepalese leaders with essential digital skills.</p>
-            <a href="#"
+            <a href="/aboutus"
                 class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                 Explore more
                 <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
@@ -29,10 +29,12 @@
                         clipRule="evenodd"></path>
                 </svg>
             </a>
-            <a href="#"
+            {% if not user.is_authenticated %}
+            <a href="/users/login"
                 class="inline-flex items-center justify-center px-5 py-3 text-base font-extrabold text-center text-white border border-gray-300 rounded-lg hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  me-2 mb-2 ">
                 Subscribe us
             </a>
+            {% endif %}
         </div>
         <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <img src="{% static "assets/cloud_related/cloudman.png" %}" alt="mockup" class="responsive-img" />
@@ -54,42 +56,48 @@
         <h1
             class="mb-4 text-1xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2 xl lg:text-3xl dark:text-white">
             {{grand_event.title}}</h1>
-        <p class="px-5 mx-5 text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">{{grand_event.description}}
-        </p>
+        <div class="px-3 ">
+            <p class="px-5 mx-5 text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                {{grand_event.description}}
+            </p>
+        </div>
+
 
         <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400"></p>
-        <div id="countDown" class="flex justify-around text-center [&>*>h2]:text-xl [&>*>h2]:sm:text-4xl [&>*>h2]:font-bold [&>*>p]:text-sm [&>*>p]:font-semibold">
-            <div>
-                <h2 id="month">{{ grand_event.startDate|date:"m" }}</h2>
-                <p>Month</p>
+        <div class="flex justify-center">
+            <div id="countDown"
+                class="flex gap-8 text-center [&>*>h2]:text-xl [&>*>h2]:sm:text-4xl [&>*>h2]:font-bold [&>*>p]:text-sm [&>*>p]:font-semibold">
+                <div>
+                    <h2 id="month" class="text-emerald-600">{{ grand_event.startDate|date:"m" }}</h2>
+                    <p>Month</p>
+                </div>
+
+                <div>
+                    <h2 id="day">{{ grand_event.startDate|date:"d" }}</h2>
+                    <p>days</p>
+                </div>
+
+                <div>
+                    <h2 id="hour">{{ grand_event.startDate|date:"H" }}</h2>
+                    <p>Hours</p>
+                </div>
+                <div>
+                    <h2 id="minute">{{ grand_event.startDate|date:"i" }}</h2>
+                    <p>Minute</p>
+                </div>
+                <div>
+                    <h2 id="second">{{ grand_event.startDate|date:"s" }}</h2>
+                    <p>Second</p>
+                </div>
             </div>
-       
-             <div>
-                 <h2 id="day">{{ grand_event.startDate|date:"d" }}</h2>
-                 <p>days</p>
-             </div>
-       
-             <div>
-                 <h2 id="hour">{{ grand_event.startDate|date:"H" }}</h2>
-                 <p>Hours</p>
-             </div>
-       
-             <div>
-                 <h2 id="minute">{{ grand_event.startDate|date:"i" }}</h2>
-                 <p>Minutes</p>
-             </div>
-       
-             <div>
-                 <h2 id="second">{{ grand_event.startDate|date:"s" }}</h2>
-                 <p>Seconds</p>
-             </div>
-            </div>
-            <p id="eventToday" class='mt-2 font-bold text-4xl'></p> 
+            <p id="eventToday" class='mt-2 font-bold text-4xl'></p>
+        </div>
         <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
             <a href="{% url 'event:GrandEvent' grand_event.id %}"
                 class="mt-10 border border-white sm:mx-5 justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                 Learn more </a>
         </div>
+
         {% else %}
         <h1
             class="mb-4 text-1xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2 xl lg:text-3xl dark:text-white">
